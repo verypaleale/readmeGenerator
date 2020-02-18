@@ -46,4 +46,15 @@ inquirer.prompt([
         name: "userContr",
         message: "What does the user need to know out contributing to the repo?",
     }
-]);
+]).then(function(answer) { // !CHECK TO SEE IF IT ACTUALLY WORKS
+    console.log(answer)
+
+    const data = getData(answer);
+
+    fs.writeFile("readme.md", data, function(err) {
+        if(err) {
+            return;
+        };
+        console.log("Success")
+    });
+});
