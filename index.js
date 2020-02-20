@@ -22,9 +22,10 @@ inquirer.prompt([
         message: "Please write a short description of your project.",
     },
     {
-        type: "input", // !CHECK
+        type: "list", // !CHECK
         name: "license",
         message: "What kind of license should your project have?",
+        choices: ["Mozilla", "Apache", "MIT", "GPL 3.0"]
     },
     {
         type: "input", // 
