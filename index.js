@@ -58,3 +58,57 @@ inquirer.prompt([
         console.log("Success")
     });
 });
+
+function generateReadme(response, answers, answersURL){
+    return `
+    # ${answers.projectName}
+  [![License](${answersURL})](${response.html_url}/${answers.projectName})
+  ​
+  ## Description
+  ​
+  ${answers.projDescr}
+  ​
+  ## Table of Contents 
+  * [Installation](#installation)
+  ​
+  * [Usage](#usage)
+  ​
+  * [License](#license)
+  ​
+  * [Contributing](#contributing)
+  ​
+  * [Tests](#tests)
+  ​
+  * [Questions](#questions)
+  ​
+  ## Installation
+  ​
+  To install necessary dependencies, run the following command:
+  \`\`\`
+  ${answers.commDepend}
+  \`\`\`
+  ## Usage
+  ​
+  ${answers.userKnow}
+  ​
+  ## License
+  ​
+  This project is licensed under the ${answers.license} license.
+    
+  ## Contributing
+  ​
+  ${answers.userContr}
+  ​
+  ## Tests
+  ​
+  To run tests, run the following command:
+  \`\`\`
+  ${answers.commRun}
+  \`\`\`
+ 
+  ## Questions
+  ​
+  <img src="${response.avatar_url}" alt="avatar" style="border-radius: 16px" width="30" />
+  ​
+  If you have any questions about the repo, contact [${response.login}](${response.html_url}).`;
+};
