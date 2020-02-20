@@ -27,14 +27,16 @@ inquirer.prompt([
         message: "What kind of license should your project have?",
     },
     {
-        type: "input", // !CHECK FOR DEFAULT OPTIONS (npm i)
+        type: "input", // 
         name: "commDepend",
         message: "What kind of command should be run to install dependencies?",
+        default: "npm i",
     },
     {
-        type: "input", // !CHECK TO ADD DEFAULT (npm test)
+        type: "input", 
         name: "commRun",
         message: "What type of command should be run to run tests?",
+        default: "npm test",
     },
     {
         type: "input",
