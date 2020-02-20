@@ -49,18 +49,23 @@ inquirer.prompt([
         name: "userContr",
         message: "What does the user need to know out contributing to the repo?",
     }
-]).then(function(answer) { // !CHECK TO SEE IF IT ACTUALLY WORKS
-    console.log(answer)
+]);
 
-    const data = getData(answer);
-
-    fs.writeFile("readme.md", data, function(err) {
-        if(err) {
-            return;
-        };
-        console.log("Success")
+promptUser()
+    .then(function(answers) {
+        if(answers.license === "Mozilla") {
+            answersURL = "https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg"
+        }
+        if(answers.license === "Apache") {
+            answersURL = "https://img.shields.io/badge/License-Apache%202.0-blue.svg"
+        }
+        if(answers.license === "MIT") {
+            answersURL = "https://img.shields.io/badge/License-MIT-yellow.svg"
+        }
+        if(answers.license === "GPL 3.0") {
+            answersURL = "https://img.shields.io/badge/License-GPLv3-blue.svg"
+    
     });
-});
 
 function generateReadme(response, answers, answersURL){
     return `
