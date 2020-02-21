@@ -1,6 +1,6 @@
 
-    # readMe Generator
-  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/verypaleale/readMe Generator)
+    # readMeGenerator
+  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/verypaleale/readMeGenerator)
   ​
   ## Description
   ​
