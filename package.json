@@ -1,0 +1,24 @@
+{
+  "name": "readme-generator",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/verypaleale/readmeGenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/verypaleale/readmeGenerator/issues"
+  },
+  "homepage": "https://github.com/verypaleale/readmeGenerator#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "inquirer": "^7.0.4",
+    "util": "^0.12.1"
+  }
+}

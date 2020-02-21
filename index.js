@@ -1,55 +1,57 @@
-const inquirer = require("inquirer");
-const fs = require("fs");
-const util = require("util");
-const axios = require("axios");
+const inquirer = require('inquirer');
+const fs = require('fs');
+const util = require('util');
+const axios = require('axios');
 
 const writeFileSync = util.promisify(fs.writeFile);
 
-inquirer.prompt([
-    {
-        type: "input",
-        name: "userName",
-        message: "What is your GitHub username"
-    },
-    {
-        type: "input",
-        name: "projectName",
-        message: "What is your project name?",
-    },
-    {
-        type: "input",
-        name: "projDescr",
-        message: "Please write a short description of your project.",
-    },
-    {
-        type: "list", // !CHECK
-        name: "license",
-        message: "What kind of license should your project have?",
-        choices: ["Mozilla", "Apache", "MIT", "GPL 3.0"]
-    },
-    {
-        type: "input", // 
-        name: "commDepend",
-        message: "What kind of command should be run to install dependencies?",
-        default: "npm i",
-    },
-    {
-        type: "input", 
-        name: "commRun",
-        message: "What type of command should be run to run tests?",
-        default: "npm test",
-    },
-    {
-        type: "input",
-        name: "userKnow",
-        message: "What does the user need to know about using the repo?",
-    },
-    {
-        type: "input",
-        name: "userContr",
-        message: "What does the user need to know out contributing to the repo?",
-    }
-]);
+function promptUser() {
+    return inquirer.prompt([
+        {
+            type: "input",
+            name: "userName",
+            message: "What is your GitHub username",
+        },
+        {
+            type: "input",
+            name: "projectName",
+            message: "What is your project name?",
+        },
+        {
+            type: "input",
+            name: "projDescr",
+            message: "Please write a short description of your project:",
+        },
+        {
+            type: "list", // !CHECK
+            name: "license",
+            message: "What kind of license should your project have?",
+            choices: ["Mozilla", "Apache", "MIT", "GPL 3.0"]
+        },
+        {
+            type: "input", // 
+            name: "commDepend",
+            message: "What kind of command should be run to install dependencies?",
+            default: "npm i",
+        },
+        {
+            type: "input", 
+            name: "commRun",
+            message: "What type of command should be run to run tests?",
+            default: "npm test",
+        },
+        {
+            type: "input",
+            name: "userKnow",
+            message: "What does the user need to know about using the repo?",
+        },
+        {
+            type: "input",
+            name: "userContr",
+            message: "What does the user need to know about contributing to the repo?",
+        }
+    ]);
+};
 
 promptUser()
     .then(function(answers) {
@@ -64,7 +66,17 @@ promptUser()
         }
         if(answers.license === "GPL 3.0") {
             answersURL = "https://img.shields.io/badge/License-GPLv3-blue.svg"
+        }
+
+        axios.get(`https://api.github.com/users/${answers.userName}`)
+            .then((fetchResponse) => {
+                response = fetchResponse.data;
+                readme = generateReadme(response, answers, answersURL);
+                return writeFileSync("mainReadme.md", readme);
+            });
     
+    }).catch(function(err) {
+    console.log(err);
     });
 
 function generateReadme(response, answers, answersURL){
