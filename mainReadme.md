@@ -1,10 +1,10 @@
 
-    # readMe
-  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/verypaleale/readMe)
+    # readMe Generator
+  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/verypaleale/readMe Generator)
   ​
   ## Description
   ​
-  this is a thing
+  A series of questions in node that generates a .readme for github
   ​
   ## Table of Contents 
   * [Installation](#installation)
@@ -27,7 +27,7 @@
   ```
   ## Usage
   ​
-  nuthin
+  clone and run!
   ​
   ## License
   ​
@@ -35,7 +35,7 @@
     
   ## Contributing
   ​
-  ask
+  make sure to properly comment!
   ​
   ## Tests
   ​
